@@ -1,0 +1,83 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center">Edit Campground</h1>
+  <div class="col-6 mx-auto">
+    <form
+      action="/campgrounds/<%=campgrounds._id%>?_method=PUT"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="campgrounds[title]"
+          id="title"
+          value="<%= campgrounds.title %>"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="campgrounds[location]"
+          id="location"
+          value="<%= campgrounds.location %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">image URL:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="campgrounds[image]"
+          id="image"
+          value="<%= campgrounds.image %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="campgrounds[description]"
+          id="description"
+          required
+        >
+        <%= campgrounds.description %>
+        </textarea>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="0.0"
+            name="campgrounds[price]"
+            aria-label="price"
+            aria-describedby="price-label"
+            value="<%= campgrounds.price %>"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-info">Edit campground</button>
+      </div>
+    </form>
+    <a href="/campgrounds/<%= campgrounds._id %>">Back to Campground</a>
+  </div>
+</div>
